@@ -1,0 +1,7 @@
+downloads/
+
+.vercel
+.env*
+node_modules/
+
+.env*

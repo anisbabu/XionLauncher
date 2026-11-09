@@ -1,0 +1,25 @@
+# deps / build output
+node_modules/
+dist/
+build/
+.tools/
+.gradle/
+xion-client-mod/build/
+website/downloads/
+
+# secrets
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+
+# local / tooling
+.claude/
+Claude outputs/
+RELEASE.cmd
+release-log.txt
+1600
+1920
+*.log

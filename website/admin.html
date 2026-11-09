@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Xion Admin</title>
+  <link rel="icon" href="assets/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/admin.css">
+</head>
+<body>
+  <main class="login" id="login">
+    <form class="login-card" id="loginForm">
+      <img src="assets/logo.png" alt="">
+      <h1>Xion Admin</h1>
+      <input id="lUser" placeholder="Name" autocomplete="username" required>
+      <input id="lPass" type="password" placeholder="Password" autocomplete="current-password" required>
+      <button type="submit">Log in</button>
+      <p class="err" id="lErr"></p>
+      <a href="/">&larr; Back to site</a>
+    </form>
+  </main>
+
+  <main class="app" id="app" hidden>
+    <header class="top">
+      <div class="brand"><img src="assets/logo.png" alt=""><b>Xion Admin</b></div>
+      <nav class="tabs" id="tabs">
+        <button data-tab="orders" class="on">Orders <span class="pill" id="unread" hidden></span></button>
+        <button data-tab="codes">Redeem codes</button>
+        <button data-tab="settings">Payment settings</button>
+      </nav>
+      <button class="ghost" id="logout">Log out</button>
+    </header>
+
+    <section class="tab on" data-tab="orders">
+      <div class="orders">
+        <aside class="list">
+          <div class="filters" id="filters"><button data-f="all" class="on">All</button><button data-f="pending">Pending</button><button data-f="approved">Approved</button><button data-f="done">Done</button><button data-f="rejected">Rejected</button></div>
+          <div class="stats" id="stats"></div>
+          <div id="orderList" class="olist"></div>
+        </aside>
+        <article class="detail" id="detail"><p class="muted center">Pick an order</p></article>
+      </div>
+    </section>
+
+    <section class="tab" data-tab="codes">
+      <div class="panel">
+        <h2>Create a redeem code</h2>
+        <form class="code-form" id="codeForm">
+          <label>Code<input id="cCode" placeholder="FREEXION" maxlength="40" required></label>
+          <label>Type<select id="cType"><option value="percent">% discount</option><option value="free">Free Xion+ (100% off)</option></select></label>
+          <label id="cValueWrap">Discount %<input id="cValue" type="number" min="1" max="99" value="20"></label>
+          <label>Max uses <small>0 = unlimited</small><input id="cMax" type="number" min="0" value="1"></label>
+          <button type="submit">Save code</button>
+        </form>
+        <p class="err" id="cErr"></p>
+        <table class="codes"><thead><tr><th>Code</th><th>Gives</th><th>Used</th><th>Active</th><th></th></tr></thead><tbody id="codeRows"></tbody></table>
+      </div>
+    </section>
+
+    <section class="tab" data-tab="settings">
+      <form class="panel settings" id="setForm">
+        <h2>Where buyers send money</h2>
+        <label>bKash number <small>Bangladesh, ৳150</small><input id="sBkash" maxlength="30" placeholder="01XXXXXXXXX"></label>
+        <label>Nagad number <small>Bangladesh, ৳150</small><input id="sNagad" maxlength="30" placeholder="01XXXXXXXXX"></label>
+        <label>UPI ID <small>India, ₹350</small><input id="sUpi" maxlength="80" placeholder="yourname@okaxis"></label>
+        <label>Card payment link <small>$5, e.g. a Stripe, Lemon Squeezy or PayPal payment link (https://…)</small><input id="sCard" maxlength="300" placeholder="https://buy.stripe.com/…"></label>
+        <label>Note shown to buyers<input id="sNote" maxlength="300"></label>
+        <button type="submit">Save settings</button>
+        <p class="err" id="sErr"></p>
+        <p class="muted small">A method with no number or link is shown to buyers as "not set up yet".</p>
+      </form>
+    </section>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script src="assets/admin-app.js"></script>
+</body>
+</html>

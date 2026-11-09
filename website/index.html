@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Xion — a quieter Minecraft client</title>
+  <meta name="description" content="Xion is a free Minecraft launcher and client for Windows and Linux. Every version from 1.18 to 26.3, a built-in FPS engine, a HUD you can drag, skins that work offline.">
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Silkscreen&family=Allura&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav-brand" href="#top"><img src="assets/logo.png" alt=""><span>Xion</span></a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#launcher">Launcher</a>
+      <a href="#ingame">In game</a>
+      <a href="#cosmetics">Cosmetics</a>
+      <a href="#android">Android</a>
+      <a href="https://xion-store.vercel.app" target="_blank" rel="noopener">Store</a>
+      
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-dl" href="#download"><span class="dot"></span>Download <em>v1.18.0</em></a>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="scene" id="scene" aria-hidden="true">
+      <div class="layer" data-depth="0.05" data-mouse="6" style="background-image:url(assets/bg/sky.webp)"></div>
+      <canvas id="stars"></canvas>
+      <div class="layer" data-depth="0.12" data-mouse="12" style="background-image:url(assets/bg/far.webp)"></div>
+      <div class="fog"><i></i></div>
+      <div class="layer" data-depth="0.2" data-mouse="20" style="background-image:url(assets/bg/mid.webp)"></div>
+      <div class="layer" data-depth="0.3" data-mouse="30" style="background-image:url(assets/bg/near.webp)"></div>
+      <div class="fog fog-2"><i></i></div>
+      <div class="layer" data-depth="0.45" data-mouse="44" style="background-image:url(assets/bg/front.webp)"></div>
+      <div class="hero-shade"></div>
+    </div>
+
+    <div class="hero-inner">
+      <p class="kicker"><span class="px">MINECRAFT CLIENT</span><span class="sep"></span><span class="px">1.18 &rarr; 26.3</span></p>
+      <h1 class="hero-title">
+        <span class="line"><span>A Minecraft client</span></span>
+        <span class="line"><span>that gets <em>out of</em></span></span>
+        <span class="line"><span>your way.</span></span>
+      </h1>
+      <p class="hero-sub">Fast by default. Every version since 1.18. A HUD you drag where you want it, skins that show up even offline, and a launcher that fixes its own crashes.</p>
+      <div class="hero-cta">
+        <a class="btn-dl" href="https://github.com/anisbabu/xion-launcher/releases/download/v1.18.0/Xion-Launcher-Setup-1.18.0.exe" download data-track>
+          <svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-5-5m5 5l5-5M5 20h14"/></svg>
+          <span><b>Download for Windows</b><small>Installer &middot; 176 MB &middot; v1.18.0</small></span>
+        </a>
+        <a class="btn-ghost" href="#features">See what&rsquo;s inside <span aria-hidden="true">&darr;</span></a>
+        <a class="btn-android" href="#android"><span class="beta">NEW</span>On your phone too</a>
+      </div>
+      <p class="signature">made by <span>Taseen Rahman</span></p>
+    </div>
+
+    <div class="hero-ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span><b>32</b> game versions</span><span><b>3</b> performance modes</span><span><b>12</b> HUD modules</span><span><b>0</b> ads, ever</span><span><b>1</b> click to play</span>
+        <span><b>32</b> game versions</span><span><b>3</b> performance modes</span><span><b>12</b> HUD modules</span><span><b>0</b> ads, ever</span><span><b>1</b> click to play</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LAUNCHER WINDOW ============ -->
+  <section class="window-sec" id="launcher">
+    <div class="sec-head">
+      <span class="tag">01 &mdash; The launcher</span>
+      <h2>Open it. Press play.<br><span class="dim">That&rsquo;s the whole tutorial.</span></h2>
+    </div>
+    <div class="window-stage">
+      <figure class="window" id="tiltWindow">
+        <div class="window-bar"><i></i><i></i><i></i><span>Xion Launcher</span></div>
+        <img src="assets/shots/launcher-home.jpg" alt="Xion Launcher home screen with mountain backdrop, play button and news" loading="lazy">
+        <span class="pin" style="left:10%;top:89%" data-n="1"></span>
+        <span class="pin" style="left:25%;top:89%" data-n="2"></span>
+        <span class="pin" style="left:83%;top:52%" data-n="3"></span>
+        <span class="pin" style="left:79%;top:85%" data-n="4"></span>
+      </figure>
+      <ol class="callouts">
+        <li><b>Play</b> launches your last profile. The ring fills while it downloads.</li>
+        <li><b>Profiles</b> &mdash; one per version, each with its own mods and worlds.</li>
+        <li><b>News</b> straight from Minecraft, so you know when a snapshot drops.</li>
+        <li><b>Quick join</b> with live player counts. One click and you&rsquo;re in.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="features" id="features">
+    <div class="sec-head">
+      <span class="tag">02 &mdash; What&rsquo;s inside</span>
+      <h2>Small things, done properly.<br><span class="dim">Poke the cards. Most of them are real.</span></h2>
+    </div>
+
+    <div class="bento">
+      <!-- versions ruler -->
+      <article class="card c-versions reveal">
+        <header><span class="num">A</span><h3>Every version since 1.18</h3></header>
+        <p>Xion Client ships a build for each one. Pick a version, it just works.</p>
+        <div class="ruler" id="ruler" aria-label="Supported versions">
+          <div class="ruler-track" id="rulerTrack"></div>
+        </div>
+        <div class="ruler-hint"><span>&larr; drag &rarr;</span><span id="rulerCount">32 builds</span></div>
+        <div class="loaders"><span>Fabric <b>default</b></span><span>Quilt</span><span>Vanilla menus reskinned</span><span>Java picked for you</span></div>
+      </article>
+
+      <!-- accounts -->
+      <article class="card c-accounts reveal" id="accounts">
+        <header><span class="num">B</span><h3>Two ways in</h3></header>
+        <div class="flip" id="flip">
+          <div class="flip-face front">
+            <div class="ms-grid"><i></i><i></i><i></i><i></i></div>
+            <b>Microsoft</b><small>Your real account. Servers, skins, everything.</small>
+          </div>
+          <div class="flip-face back">
+            <div class="off-avatar"></div>
+            <b>Offline</b><small>Any username. Great for LAN and testing.</small>
+          </div>
+        </div>
+        <button class="chip-btn" id="flipBtn">Switch <span aria-hidden="true">&#8644;</span></button>
+      </article>
+
+      <!-- performance -->
+      <article class="card c-perf reveal">
+        <header><span class="num">C</span><h3>Fast before you touch a setting</h3></header>
+        <div class="fps"><span class="fps-num" id="fpsNum">60</span><span class="fps-unit">FPS</span></div>
+        <p class="small">Xion&rsquo;s own FPS engine is tuned into every profile from the start. Nothing to install.</p>
+        <div class="blocks" id="blocks"></div>
+      </article>
+
+      <!-- HUD editor -->
+      <article class="card c-hud reveal">
+        <header><span class="num">D</span><h3>A HUD you can drag</h3></header>
+        <p>12 modules. Drag them around this little screen &mdash; and try pressing W A S D.</p>
+        <div class="hud-view" id="hudView">
+          <div class="hud-w" style="left:4%;top:8%"><span class="lbl">FPS</span> 238</div>
+          <div class="hud-w" style="left:4%;top:28%"><span class="lbl">CPS</span> <span id="cps">0 | 0</span></div>
+          <div class="hud-w" style="right:4%;top:8%"><span class="lbl">XYZ</span> 128 64 -302</div>
+          <div class="hud-w keys" style="right:6%;bottom:10%">
+            <span class="k" data-k="w">W</span>
+            <span class="k" data-k="a">A</span><span class="k" data-k="s">S</span><span class="k" data-k="d">D</span>
+            <span class="k wide" data-k=" ">&mdash;</span>
+          </div>
+          <div class="hud-w" style="left:4%;bottom:10%"><span class="lbl">PING</span> 24ms</div>
+          <div class="hud-grid"></div>
+        </div>
+      </article>
+
+      <!-- right shift -->
+      <article class="card c-menu reveal" id="menuCard">
+        <header><span class="num">E</span><h3>Right Shift</h3></header>
+        <p class="small">Opens the Xion menu in game. Here too &mdash; press it.</p>
+        <ul class="toggles">
+          <li><span>Auto Sprint</span><button class="sw on" aria-pressed="true"></button></li>
+          <li><span>Fullbright</span><button class="sw" aria-pressed="false"></button></li>
+          <li><span>Xion Badge</span><button class="sw on" aria-pressed="true"></button></li>
+          <li><span>Custom Skin</span><button class="sw on" aria-pressed="true"></button></li>
+          <li><span>HUD Background</span><button class="sw" aria-pressed="false"></button></li>
+        </ul>
+        <kbd class="rshift" id="rshift">Right Shift</kbd>
+      </article>
+
+      <!-- skin -->
+      <article class="card c-skin reveal">
+        <header><span class="num">F</span><h3>Your skin, even offline</h3></header>
+        <canvas id="skinHead" width="8" height="8" aria-label="Pixel avatar"></canvas>
+        <p class="small">Upload a skin in the launcher. Xion shows it in game &mdash; on offline accounts too.</p>
+        <div class="nametag"><img src="assets/logo.png" alt=""><span>Steve</span></div>
+      </article>
+
+      <!-- mod browser -->
+      <article class="card c-mods reveal">
+        <header><span class="num">G</span><h3>Mods in one click</h3></header>
+        <div class="search"><span class="mono">/</span><span id="typed"></span><span class="caret"></span></div>
+        <ul class="results" id="results"></ul>
+        <p class="small">Thousands of Fabric mods from Modrinth. Dependencies come along automatically.</p>
+      </article>
+
+      <!-- servers -->
+      <article class="card c-server reveal">
+        <header><span class="num">H</span><h3>Host a server</h3></header>
+        <pre class="term" id="termServer"></pre>
+        <p class="small">Paper servers on your own PC for you and your friends. No command line needed.</p>
+      </article>
+
+      <!-- self healing -->
+      <article class="card c-heal reveal">
+        <header><span class="num">I</span><h3>Crashes fix themselves</h3></header>
+        <pre class="term" id="termHeal"></pre>
+        <p class="small">A mod breaks? Xion finds it, turns it off and relaunches. Missing a library? It grabs it.</p>
+      </article>
+
+      <!-- net -->
+      <article class="card c-net reveal">
+        <header><span class="num">J</span><h3>Bad Wi-Fi friendly</h3></header>
+        <div class="net"><span></span><span></span><span></span><span></span></div>
+        <p class="small">Slow DNS, flaky router? Xion retries smartly and caches what it can.</p>
+      </article>
+
+      <!-- menus -->
+      <article class="card c-menus reveal">
+        <header><span class="num">K</span><h3>New menus, same muscle memory</h3></header>
+        <div class="menus-pair">
+          <img src="assets/shots/game-menu.jpg" alt="Xion main menu in game" loading="lazy">
+          <img src="assets/shots/game-createworld.jpg" alt="Create world screen with Xion backdrop" loading="lazy">
+        </div>
+        <p class="small">The main menu, pause menu and every vanilla screen get the same calm mountain backdrop.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ IN GAME (horizontal) ============ -->
+  <section class="gallery" id="ingame">
+    <div class="gallery-pin">
+      <div class="sec-head inline">
+        <span class="tag">03 &mdash; Look around</span>
+        <h2>Screens from the real thing.</h2>
+      </div>
+      <div class="gallery-track" id="galleryTrack">
+        <figure class="shot"><img src="assets/shots/game-menu.jpg" alt="" loading="lazy"><figcaption><b>Main menu</b> Welcome back, quick join on the right.</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/launcher-mods.jpg" alt="" loading="lazy"><figcaption><b>Mod browser</b> Search Modrinth, install into any profile.</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/launcher-skin.jpg" alt="" loading="lazy"><figcaption><b>Skin</b> 3D preview with walk, run and wave.</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/game-createworld.jpg" alt="" loading="lazy"><figcaption><b>Vanilla screens</b> Same layout, new skin.</figcaption></figure>
+        <figure class="shot"><img src="assets/shots/launcher-profiles.jpg" alt="" loading="lazy"><figcaption><b>Profiles</b> Separate folders, separate mods.</figcaption></figure>
+      </div>
+      <div class="gallery-progress"><i id="galleryBar"></i></div>
+    </div>
+  </section>
+
+
+  <!-- ============ ANDROID ============ -->
+  <section class="android" id="android">
+    <div class="android-grid">
+      <div class="android-copy reveal">
+        <span class="tag">04 &mdash; Xion Mobile <em class="beta">1.1</em></span>
+        <h2>Java Edition.<br><span class="dim">In your pocket.</span></h2>
+        <p>The real Minecraft Java Edition on Android &mdash; same worlds, same servers, same mods &mdash; tuned so it stays playable on ordinary phones.</p>
+        <ul class="android-points">
+          <li><b>Tuned for your phone</b><span>Lite mode detects a low-end, mid-range or high-end phone and sets render resolution, render distance and effects to match. One tap to turn off.</span></li>
+          <li><b>FPS boost built in</b><span>Xion&rsquo;s phone pack is set up for you on every profile, plus a minimap and hunger info.</span></li>
+          <li><b>Play offline instantly</b><span>Just pick a username &mdash; no Microsoft account needed. Microsoft sign-in is there too.</span></li>
+          <li><b>Touch controls</b><span>Fully editable on-screen buttons, plus gamepad and mouse support.</span></li>
+          <li><b>Fabric, 1.21 to 26.3</b><span>Only the versions Xion Mobile is tuned for, so you don&rsquo;t pick one that runs badly.</span></li>
+        </ul>
+        <a class="dl-opt main android-dl" href="https://github.com/anisbabu/xion-mobile/releases/download/v1.1.0/Xion-Mobile-1.1.0.apk" download>
+          <span class="dl-ico"><svg viewBox="0 0 24 24"><path d="M7 9h10v8a2 2 0 01-2 2H9a2 2 0 01-2-2zM7 9a5 5 0 0110 0M9.5 5.5 8 3.5M14.5 5.5 16 3.5M10 7v.01M14 7v.01M4.5 10v5M19.5 10v5"/></svg></span>
+          <span class="dl-txt"><b>Download APK</b><small>Xion-Mobile-1.1.0.apk &middot; 125 MB &middot; Android 8+</small></span>
+          <span class="dl-arrow">&rarr;</span>
+        </a>
+        <p class="small dim android-note">Play offline with just a username, or sign in with Microsoft. Best on phones with 4 GB RAM or more and a 64-bit chip. Based on the open-source <a href="https://github.com/AngelAuraMC/Amethyst-Android" target="_blank" rel="noopener">Amethyst</a> engine &mdash; <a href="https://github.com/anisbabu/xion-mobile" target="_blank" rel="noopener">Xion Mobile source</a> (LGPL-3.0).</p>
+      </div>
+
+      <div class="phone-wrap reveal" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="ph-scene"></div>
+            <div class="ph-top"><span class="ph-acc"><i></i>Steve</span><span class="ph-gear"></span></div>
+            <div class="ph-left">
+              <span class="ph-chip"><i></i>Ready &middot; Java Edition</span>
+              <b class="ph-title">Xion</b>
+              <span class="ph-sub">Minecraft Java Edition, tuned for your phone.</span>
+              <span class="ph-profile">Fabric 1.21.1 <em>&#9662;</em></span>
+              <span class="ph-play">Play</span>
+            </div>
+            <div class="ph-tiles">
+              <span>Lite mode</span><span>Controls</span><span>Files</span><span>Install .jar</span><span>Share logs</span><span>Website</span>
+            </div>
+          </div>
+        </div>
+        <p class="phone-cap">Design preview of the home screen</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT'S NEW ============ -->
+  <section class="whatsnew" id="whatsnew">
+    <div class="sec-head">
+      <span class="tag">New &mdash; v1.18</span>
+      <h2>Your mods, right in the game.<br><span class="dim">Press Right Shift. Logos, switches, settings.</span></h2>
+    </div>
+    <div class="wn-new">
+      <article class="card reveal" style="grid-column: 1 / -1">
+        <header><span class="num">MODS</span><h3>The new in-game Mods menu</h3></header>
+        <p>Press <b>Right Shift</b> in game and Xion Client opens straight on <b>Mods</b>: every mod in your profile as an animated card with its own logo, cut clean from its background. Flip a mod <b>on or off</b> with its switch, or open its <b>settings</b> with the &#9881; button. Filter by <b>Xion Pack</b> or the mods you added yourself. Changes apply the next time you press Play, and mods other mods depend on stay safely on.</p>
+      </article>
+      <article class="card wn-pvp reveal" style="grid-column: 1 / -1">
+        <header><span class="num">PVP</span><h3>Xion PvP mode &mdash; free for everyone</h3></header>
+        <p>Pick any version from 1.18 to 26.3 and play it in PvP mode. Xion Client switches to a <b>fighting HUD</b> (combo, reach, CPS keystrokes, armor, potions, totem and gapple counts), a sharp red <b>PvP menu</b>, a <b>PvP mod pack</b> (performance, low fire, hit colour, zoom, freelook) and tuned game options. Join Hypixel, Minemen Club and more straight from the PvP page.</p>
+      </article>
+      <article class="card reveal">
+        <header><span class="num">BLUR</span><h3>Motion blur everywhere</h3></header>
+        <p>Smooth motion blur now comes with every modern version too, 1.18 to 26.3. Set the strength in Mod Menu, or switch it off per profile.</p>
+      </article>
+      <article class="card reveal">
+        <header><span class="num">FIX</span><h3>Badges see each other</h3></header>
+        <p>Players on Xion Client now see each other&rsquo;s Xion badge in the tab list and above their heads. Gold for Xion+, white for free. Turn it off with &ldquo;Xion Badge&rdquo; in the menu.</p>
+      </article>
+      <article class="card reveal" style="grid-column: 1 / -1">
+        <header><span class="num">PACK</span><h3>The Xion Pack</h3></header>
+        <p>Xion&rsquo;s own resource pack, on by default: dark inventories, chests and menus, smaller swords and tools in your hand, a lower shield and a clear pumpkin view. Made for each game version Turn it off in Settings or under Resource Packs.</p>
+      </article>
+      <article class="card reveal">
+        <header><span class="num">MIC</span><h3>In-game voice chat</h3></header>
+        <p>Proximity voice built in. Hold <b>Caps Lock</b> to talk, press <b>V</b> for volume and mic settings. Works in your worlds, over LAN and on servers with voice chat.</p>
+      </article>
+      <article class="card reveal">
+        <header><span class="num">360</span><h3>Freelook</h3></header>
+        <p>Hold a key and look all around you while you keep running straight. Pick the key in Controls.</p>
+      </article>
+      <article class="card reveal">
+        <header><span class="num">&uarr;</span><h3>Updates itself</h3></header>
+        <p>From v1.10 the installed launcher downloads new versions in the background. One click on <b>Restart to update</b> and you&rsquo;re current.</p>
+      </article>
+    </div>
+    <div class="wn-grid">
+      <article class="card wn-perf reveal">
+        <header><span class="num">FPS</span><h3>Performance modes</h3></header>
+        <p>One click in Settings &rarr; Performance. Tuned for integrated graphics; applied once, so you can still tweak video settings after.</p>
+        <div class="wn-modes">
+          <div class="wn-mode"><b>Off</b><small>Your own settings, untouched</small></div>
+          <div class="wn-mode on"><b>Boost <i>FREE</i></b><small>Fast graphics, no clouds, fewer particles, no entity shadows, tuned Java memory</small></div>
+          <div class="wn-mode gold"><b>Turbo <i>XION+</i></b><small>Everything in Boost plus no smooth lighting, opaque leaves, minimal particles, no mipmaps</small></div>
+        </div>
+      </article>
+      <article class="card wn-badge reveal">
+        <header><span class="num">X</span><h3>New Xion badge</h3></header>
+        <p>Next to your name in the tab list, chat and F5 &mdash; a clean transparent X, no more square tile.</p>
+        <div class="wn-badges">
+          <figure><i class="bx free" role="img" aria-label="Free Xion badge"></i><figcaption>Free<small>Icy X</small></figcaption></figure>
+          <figure><i class="bx pro" role="img" aria-label="Animated gold Xion+ badge"></i><figcaption>Xion+<small>Animated gold X</small></figcaption></figure>
+        </div>
+        <div class="wn-tab" aria-hidden="true">
+          <span><i class="bx free sm"></i>Steve</span>
+          <span><i class="bx pro sm"></i>you</span>
+        </div>
+      </article>
+      <article class="card wn-mods reveal">
+        <header><span class="num">+8</span><h3>Bigger optimization pack</h3></header>
+        <p>More of Xion&rsquo;s FPS engine, matched to each game version and installed automatically.</p>
+        <ul class="wn-chips">
+          <li>Smoother frames</li><li>Less stutter</li><li>Lower memory use</li><li>Faster loading</li><li>Quicker server list</li><li>Fewer bugs</li>
+        </ul>
+      </article>
+      <article class="card wn-themes reveal">
+        <header><span class="num">6</span><h3>Themes, launcher to game</h3></header>
+        <p>Colours, menus and the mountain backdrop change together &mdash; in the launcher and in the ESC menu.</p>
+        <div class="wn-swatches">
+          <figure style="background-image:url(assets/themes/nightfall.jpg)"><figcaption>Nightfall</figcaption></figure>
+          <figure style="background-image:url(assets/themes/aurora.jpg)"><figcaption>Aurora</figcaption></figure>
+          <figure style="background-image:url(assets/themes/glacier.jpg)"><figcaption>Glacier</figcaption></figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PREMIUM ============ -->
+  <!-- ============ COSMETICS ============ -->
+  <section class="cosmetics" id="cosmetics">
+    <div class="sec-head">
+      <span class="tag">New &mdash; Cosmetics</span>
+      <h2>110 capes. Every one in 3D.<br><span class="dim">Spin it, fly it, then wear it in game.</span></h2>
+    </div>
+    <div class="cos-wrap">
+      <div class="cos-stage reveal" id="cosStage">
+        <div class="cos-glow" aria-hidden="true"></div>
+        <div class="cos-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+        <canvas id="cosCanvas" aria-label="3D preview of the selected cape"></canvas>
+        <div class="cos-floor" aria-hidden="true"></div>
+        <div class="cos-info" id="cosInfo"><span class="cos-tier" id="cosTier">FREE</span><b id="cosName">Loading capes&hellip;</b><small id="cosCat"></small></div>
+        <button class="cos-nav prev" id="cosPrev" aria-label="Previous cape">&#8249;</button>
+        <button class="cos-nav next" id="cosNext" aria-label="Next cape">&#8250;</button>
+        <div class="cos-anim" id="cosAnim">
+          <button data-a="idle" class="on">Idle</button><button data-a="walk">Walk</button><button data-a="run">Run</button><button data-a="fly">Elytra</button>
+        </div>
+        <span class="cos-hint">Drag to spin</span>
+      </div>
+      <div class="cos-side reveal">
+        <div class="cos-cats" id="cosCats"></div>
+        <div class="cos-grid" id="cosGrid"></div>
+        <p class="cos-note">9 capes are free for everyone. <b>Xion+</b> unlocks all 110, including 12 animated ones, and lets you upload your own. Your elytra always matches your cape. Pick one in Xion Launcher &rarr; Skin, or in game with Right Shift &rarr; Cosmetics.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="premium" id="premium">
+    <div class="sec-head">
+      <span class="tag">Xion+ &mdash; optional</span>
+      <h2>Everything above is free.<br><span class="dim">Xion+ is the extra shine.</span></h2>
+    </div>
+    <div class="prem-grid">
+      <div class="prem-card reveal">
+        <div class="prem-top"><span class="prem-badge">XION+</span><span class="prem-price">$5 <small>one-time &middot; &#2547;150 &middot; &#8377;350</small></span></div>
+        <ul class="prem-list">
+          <li><b>100+ capes &amp; matching elytra</b><span>Animated, galaxy, emblem and pattern capes &mdash; pick them in the launcher or in game</span></li>
+          <li><b>Upload your own cape</b><span>Any cape texture or picture, on your back and your elytra</span></li>
+          <li><b>3 premium themes</b><span>Sakura, Ember and Void &mdash; launcher and in game</span></li>
+          <li><b>Turbo FPS mode</b><span>Max-FPS preset for integrated graphics</span></li>
+          <li><b>Animated gold X badge</b><span>Shimmers next to your name in the tab list, chat and F5</span></li>
+          <li><b>Chroma &amp; custom HUD colours</b><span>Rainbow or any colour per HUD module</span></li>
+          <li><b>Custom crosshair</b><span>Dot, plus, gap, circle or cross &mdash; any colour and size</span></li>
+          <li><b>Pro HUD modules</b><span>Target HUD with health bar, Combo counter, Reach display</span></li>
+        </ul>
+        <a class="dl-opt main prem-buy" href="#premium" id="buyPremium" data-buy>
+          <span class="dl-txt"><b>Get Xion+</b><small>Card, bKash, Nagad or UPI</small></span>
+          <span class="dl-arrow">&rarr;</span>
+        </a>
+        <p class="small dim">Send your <b>Device ID</b> (Xion Launcher &rarr; Settings &rarr; Xion Premium) with your purchase. Your key is made for that PC: paste it in the same place and it works offline, forever.</p>
+      </div>
+      <div class="theme-strip reveal" aria-hidden="true">
+        <figure style="background-image:url(assets/themes/sakura.jpg)"><figcaption>Sakura</figcaption></figure>
+        <figure style="background-image:url(assets/themes/ember.jpg)"><figcaption>Ember</figcaption></figure>
+        <figure style="background-image:url(assets/themes/void.jpg)"><figcaption>Void</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOWNLOAD ============ -->
+  <section class="download" id="download">
+    <div class="dl-card reveal">
+      <div class="dl-left">
+        <span class="tag">05 &mdash; Get it</span>
+        <h2>Free. Windows, Linux &amp; Android.</h2>
+        <p>No account with us, no sign-up, no ads. Java is downloaded for you, per version.</p>
+        <div class="dl-options">
+          <a class="dl-opt main" href="https://github.com/anisbabu/xion-launcher/releases/download/v1.18.0/Xion-Launcher-Setup-1.18.0.exe" download>
+            <span class="dl-ico"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0l-5-5m5 5l5-5M5 20h14"/></svg></span>
+            <span class="dl-txt"><b>Installer</b><small>Xion-Launcher-Setup-1.18.0.exe &middot; 176 MB</small></span>
+            <span class="dl-arrow">&rarr;</span>
+          </a>
+          <a class="dl-opt" href="https://github.com/anisbabu/xion-launcher/releases/download/v1.18.0/XionLauncher-Portable-1.18.0.exe" download>
+            <span class="dl-ico"><svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4-8 4zM4 8v8l8 4 8-4V8M12 12v8"/></svg></span>
+            <span class="dl-txt"><b>Portable</b><small>No install, updates itself &middot; 121 MB</small></span>
+            <span class="dl-arrow">&rarr;</span>
+          </a>
+          <a class="dl-opt" href="https://github.com/anisbabu/xion-launcher/releases/download/v1.18.0/Xion-Launcher-1.18.0-linux-x86_64.AppImage" download>
+            <span class="dl-ico"><svg viewBox="0 0 24 24"><path d="M4 17l4-4-4-4M11 17h8"/></svg></span>
+            <span class="dl-txt"><b>Linux &middot; AppImage</b><small>Any distro, updates itself &middot; 182 MB</small></span>
+            <span class="dl-arrow">&rarr;</span>
+          </a>
+          <a class="dl-opt" href="https://github.com/anisbabu/xion-launcher/releases/download/v1.18.0/Xion-Launcher-1.18.0-linux-amd64.deb" download>
+            <span class="dl-ico"><svg viewBox="0 0 24 24"><path d="M4 17l4-4-4-4M11 17h8"/></svg></span>
+            <span class="dl-txt"><b>Linux &middot; .deb</b><small>Ubuntu, Debian, Mint &middot; 113 MB</small></span>
+            <span class="dl-arrow">&rarr;</span>
+          </a>
+          <a class="dl-opt" href="https://github.com/anisbabu/xion-mobile/releases/download/v1.1.0/Xion-Mobile-1.1.0.apk" download>
+            <span class="dl-ico"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span>
+            <span class="dl-txt"><b>Android</b><small>Xion-Mobile-1.1.0.apk &middot; 125 MB</small></span>
+            <span class="dl-arrow">&rarr;</span>
+          </a>
+        </div>
+        <details class="hash">
+          <summary>SHA-256 checksums</summary>
+          <code data-copy>5258926ad3676b58c7681e1b4e54029ccaa81f16ccc5254def9b6442ee4d76bb</code>
+          <code data-copy>186f1bdace6bda879af9a2e1bd64287edda7417a8d49b5ce2abe71b5bded9e7a</code>
+          <code data-copy>0dc6391306d44147089336272f5193f852300490b9fa511e88f6852805a52ace</code>
+          <code data-copy>11eb3e97f705d7238edff6e6e7aa238bd2cbe70488be45a0155511c79ae07d05</code>
+          <code data-copy>714835789c2d13a009d7aa9e610ff727785eaacb51c5d921d19cbaa69b37daa3</code>
+        </details>
+      </div>
+      <ol class="dl-steps">
+        <li><span>1</span><div><b>Run the installer</b><small>Windows may say &ldquo;protected your PC&rdquo; because the app isn&rsquo;t code-signed yet. Click <em>More info &rarr; Run anyway</em>.</small></div></li>
+        <li><span>2</span><div><b>Sign in</b><small>Microsoft account, or just type a username for offline.</small></div></li>
+        <li><span>3</span><div><b>Press Play</b><small>First launch downloads the game and Java. After that it&rsquo;s seconds.</small></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq" id="faq">
+    <div class="sec-head">
+      <span class="tag">06 &mdash; Questions</span>
+      <h2>Fair questions.</h2>
+    </div>
+    <div class="faq-list">
+      <details><summary>Is it free?</summary><p>Yes. The launcher, Xion Client, Boost mode and the free themes cost nothing &mdash; no ads, no account with us. Xion+ is an optional one-time extra: $5, &#2547;150 or &#8377;350. You still need to own Minecraft to play online with a Microsoft account.</p></details>
+      <details><summary>Will it get me banned on servers?</summary><p>Xion only adds things like a HUD, zoom and performance tweaks &mdash; the same kind of features most clients ship. Auto Sprint and Fullbright are toggles; check a server&rsquo;s rules if you&rsquo;re unsure and switch them off.</p></details>
+      <details><summary>Which versions work?</summary><p>Every release from 1.18 to 26.3, with Fabric or Quilt. Each version gets its own Xion Client build, so menus, HUD and skins work everywhere.</p></details>
+      <details><summary>Will it run on a laptop with integrated graphics?</summary><p>Yes &mdash; that&rsquo;s what Performance modes are for. Boost (free) and Turbo (Xion+) cut the heaviest settings. How many FPS you get still depends on your chip and RAM, so give the game at least 3&ndash;4 GB in Settings &rarr; Memory.</p></details>
+      <details><summary>Can I add my own mods?</summary><p>Yes. Search Modrinth inside the launcher, or drop jars into the profile&rsquo;s mods folder. Dependencies install automatically.</p></details>
+      <details><summary>Why does Windows warn me?</summary><p>The app isn&rsquo;t code-signed yet, so SmartScreen doesn&rsquo;t recognise it. You can compare the file with the SHA-256 checksum above before running it.</p></details>
+      <details><summary>Will it run on my phone?</summary><p>Xion Mobile needs Android 8 or newer, a 64-bit chip, and runs best with 4 GB of RAM or more. Lite mode keeps settings low by default; turn it off from the home screen if your phone can handle more. To install, allow &ldquo;Install unknown apps&rdquo; when Android asks.</p></details>
+      <details><summary>Linux, Mac or iPhone?</summary><p>Linux is here: an AppImage (any distro; run <code>chmod +x</code> on it, then open it) and a .deb for Ubuntu and Debian, 64-bit only. Mac and iPhone: not yet.</p></details>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="foot-big" aria-hidden="true">XION</div>
+    <div class="foot-row">
+      <span class="signature">made by <span>Taseen Rahman</span></span>
+      <span class="small dim">Not affiliated with Mojang Studios or Microsoft. Minecraft is a trademark of Mojang Synergies AB. Xion Mobile is based on <a href="https://github.com/AngelAuraMC/Amethyst-Android" target="_blank" rel="noopener">Amethyst</a> and PojavLauncher (LGPL-3.0).</span>
+      <a class="small" href="#top">Back to top &uarr;</a>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status"></div>
+  <a class="admin-link" href="/admin.html">admin</a>
+  <script src="main.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>

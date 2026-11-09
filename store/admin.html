@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Store Admin · Xion</title>
+  <link rel="icon" href="/assets/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/store.css">
+  <style>
+    .adm { max-width: 1300px; margin: 0 auto; padding: 24px clamp(12px, 3vw, 32px); }
+    .tabs { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+    .split { display: grid; grid-template-columns: 380px 1fr; gap: 16px; }
+    .list { display: grid; gap: 8px; align-content: start; max-height: calc(100vh - 180px); overflow: auto; }
+    .orow { padding: 12px; cursor: pointer; display: grid; gap: 4px; }
+    .orow.sel { border-color: var(--accent); }
+    .orow .top { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+    .orow small { color: var(--muted); }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent2); display: inline-block; }
+    .pane { padding: 20px; display: grid; gap: 12px; align-content: start; }
+    .kv { display: grid; grid-template-columns: 140px 1fr; gap: 6px 12px; font-size: 14px; }
+    .kv span:nth-child(odd) { color: var(--muted); }
+    .shot { max-width: 100%; max-height: 520px; border-radius: 12px; border: 1px solid var(--line); image-rendering: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    td, th { text-align: left; padding: 8px; border-bottom: 1px solid var(--line); }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; align-items: end; }
+    @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"><div class="stars"></div></div>
+  <header class="nav">
+    <a class="brand" href="/"><img src="/assets/logo.png" alt=""><span>XION <b>STORE</b> · Admin</span></a>
+    <div class="nav-right"><button class="mc-btn small hidden" id="logout">Log out</button></div>
+  </header>
+  <main class="adm">
+    <form id="login" class="card locker-login" style="margin:60px auto">
+      <h3 style="margin:0;font:700 26px var(--pix)">Admin login</h3>
+      <label>Name<input name="user" required autocomplete="username"></label>
+      <label>Password<input name="pass" type="password" required autocomplete="current-password"></label>
+      <button class="mc-btn primary">Log in</button>
+      <p class="err" id="loginErr"></p>
+    </form>
+    <div id="app" class="hidden">
+      <div class="tabs">
+        <button class="chip on" data-tab="orders">Orders <span id="pendingN"></span></button>
+        <button class="chip" data-tab="players">Players</button>
+        <button class="chip" data-tab="codes">Codes</button>
+        <button class="chip" data-tab="settings">Payment settings</button>
+        <button class="mc-btn small" id="refresh" style="margin-left:auto">↻ Refresh</button>
+      </div>
+      <section data-view="orders" class="split">
+        <div>
+          <div class="filters" style="margin-bottom:10px"><button class="chip on" data-of="pending">Pending</button><button class="chip" data-of="approved">Approved</button><button class="chip" data-of="rejected">Rejected</button><button class="chip" data-of="all">All</button></div>
+          <div class="list" id="olist"></div>
+        </div>
+        <div class="card pane" id="opane"><p class="note">Pick an order.</p></div>
+      </section>
+      <section data-view="players" class="hidden">
+        <div class="card pane">
+          <div class="form-grid">
+            <label>Minecraft name<input id="pName" maxlength="16"></label>
+            <label>Item or bundle<select id="pItem"></select></label>
+            <button class="mc-btn green" id="pGrant">Grant</button>
+            <button class="mc-btn" id="pRevoke">Revoke</button>
+            <button class="mc-btn" id="pReset">Reset locker key</button>
+          </div>
+          <p class="note" id="pNote"></p>
+          <table><thead><tr><th>Player</th><th>Owned</th><th>Wearing</th><th>Since</th></tr></thead><tbody id="ptable"></tbody></table>
+        </div>
+      </section>
+      <section data-view="codes" class="hidden">
+        <div class="card pane">
+          <form class="form-grid" id="codeForm">
+            <label>Code<input name="code" required maxlength="40" placeholder="SPOOKY20"></label>
+            <label>Type<select name="type"><option value="percent">% off</option><option value="free">Free order</option></select></label>
+            <label>Percent off<input name="value" type="number" min="1" max="99" value="20"></label>
+            <label>Max uses (0 = unlimited)<input name="maxUses" type="number" min="0" value="0"></label>
+            <button class="mc-btn primary">Save code</button>
+          </form>
+          <table><thead><tr><th>Code</th><th>Discount</th><th>Uses</th><th>Active</th><th></th></tr></thead><tbody id="ctable"></tbody></table>
+        </div>
+      </section>
+      <section data-view="settings" class="hidden">
+        <form class="card pane" id="setForm" style="max-width:640px">
+          <label>bKash number<input name="bkash" maxlength="30"></label>
+          <label>Nagad number<input name="nagad" maxlength="30"></label>
+          <label>UPI ID<input name="upi" maxlength="80"></label>
+          <label>Card payment link (https://…)<input name="cardLink" maxlength="300"></label>
+          <label>Note shown to buyers<textarea name="note" maxlength="300" rows="3"></textarea></label>
+          <button class="mc-btn primary">Save</button>
+          <p class="note" id="setNote"></p>
+        </form>
+      </section>
+    </div>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

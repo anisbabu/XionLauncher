@@ -1,0 +1,772 @@
+[
+ {
+  "id": "grad_midnight",
+  "name": "Midnight",
+  "cat": "Gradient",
+  "tier": "free",
+  "frames": 1
+ },
+ {
+  "id": "grad_ocean",
+  "name": "Ocean",
+  "cat": "Gradient",
+  "tier": "free",
+  "frames": 1
+ },
+ {
+  "id": "grad_sunset",
+  "name": "Sunset",
+  "cat": "Gradient",
+  "tier": "free",
+  "frames": 1
+ },
+ {
+  "id": "grad_mint",
+  "name": "Mint",
+  "cat": "Gradient",
+  "tier": "free",
+  "frames": 1
+ },
+ {
+  "id": "grad_cherry",
+  "name": "Cherry",
+  "cat": "Gradient",
+  "tier": "free",
+  "frames": 1
+ },
+ {
+  "id": "grad_lava",
+  "name": "Lava",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_frost",
+  "name": "Frost",
+  "cat": "Gradient",
+  "tier": "free",
+  "frames": 1
+ },
+ {
+  "id": "grad_forest",
+  "name": "Forest",
+  "cat": "Gradient",
+  "tier": "free",
+  "frames": 1
+ },
+ {
+  "id": "grad_royal",
+  "name": "Royal",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_sakura",
+  "name": "Sakura",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_ember",
+  "name": "Ember",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_void",
+  "name": "Void",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_gold",
+  "name": "Gold",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_silver",
+  "name": "Silver",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_bronze",
+  "name": "Bronze",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_aqua",
+  "name": "Aqua",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_lime",
+  "name": "Lime",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_grape",
+  "name": "Grape",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_peach",
+  "name": "Peach",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_coffee",
+  "name": "Coffee",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_slate",
+  "name": "Slate",
+  "cat": "Gradient",
+  "tier": "free",
+  "frames": 1
+ },
+ {
+  "id": "grad_neonpink",
+  "name": "Neon Pink",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_neonblue",
+  "name": "Neon Blue",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_toxic",
+  "name": "Toxic",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_blood",
+  "name": "Blood",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_sky",
+  "name": "Sky",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_sand",
+  "name": "Sand",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_ice",
+  "name": "Ice",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_storm",
+  "name": "Storm",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "grad_coral",
+  "name": "Coral",
+  "cat": "Gradient",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "stripes_royal",
+  "name": "Royal Stripes",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "stripes_blood",
+  "name": "Blood Stripes",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "stripes_aqua",
+  "name": "Aqua Stripes",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "stripes_gold",
+  "name": "Gold Stripes",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "diagonal_neonblue",
+  "name": "Neon Blue Diagonal",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "diagonal_lime",
+  "name": "Lime Diagonal",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "diagonal_peach",
+  "name": "Peach Diagonal",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "diagonal_storm",
+  "name": "Storm Diagonal",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "chevron_ember",
+  "name": "Ember Chevron",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "chevron_grape",
+  "name": "Grape Chevron",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "chevron_sky",
+  "name": "Sky Chevron",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "chevron_coral",
+  "name": "Coral Chevron",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "checker_slate",
+  "name": "Slate Checker",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "checker_toxic",
+  "name": "Toxic Checker",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "checker_sakura",
+  "name": "Sakura Checker",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "checker_bronze",
+  "name": "Bronze Checker",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "dots_midnight",
+  "name": "Midnight Dots",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "dots_cherry",
+  "name": "Cherry Dots",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "dots_mint",
+  "name": "Mint Dots",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "dots_sand",
+  "name": "Sand Dots",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "diamonds_void",
+  "name": "Void Diamonds",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "diamonds_gold",
+  "name": "Gold Diamonds",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "diamonds_ice",
+  "name": "Ice Diamonds",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "diamonds_forest",
+  "name": "Forest Diamonds",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "waves_ocean",
+  "name": "Ocean Waves",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "waves_sunset",
+  "name": "Sunset Waves",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "waves_neonpink",
+  "name": "Neon Pink Waves",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "waves_coffee",
+  "name": "Coffee Waves",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "zigzag_lava",
+  "name": "Lava Zigzag",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "zigzag_frost",
+  "name": "Frost Zigzag",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "zigzag_royal",
+  "name": "Royal Zigzag",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "zigzag_aqua",
+  "name": "Aqua Zigzag",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_x_void",
+  "name": "Void Xion",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_x_gold",
+  "name": "Gold Xion",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_x_frost",
+  "name": "Frost Xion",
+  "cat": "Emblem",
+  "tier": "free",
+  "frames": 1
+ },
+ {
+  "id": "emblem_star_midnight",
+  "name": "Midnight Star",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_star_royal",
+  "name": "Royal Star",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_star_sunset",
+  "name": "Sunset Star",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_heart_cherry",
+  "name": "Cherry Heart",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_heart_sakura",
+  "name": "Sakura Heart",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_heart_neonpink",
+  "name": "Neon Pink Heart",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_moon_midnight",
+  "name": "Midnight Moon",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_moon_storm",
+  "name": "Storm Moon",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_moon_grape",
+  "name": "Grape Moon",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_bolt_neonblue",
+  "name": "Neon Blue Bolt",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_bolt_storm",
+  "name": "Storm Bolt",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_bolt_toxic",
+  "name": "Toxic Bolt",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_crown_gold",
+  "name": "Gold Crown",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_crown_royal",
+  "name": "Royal Crown",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_crown_blood",
+  "name": "Blood Crown",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_diamond_aqua",
+  "name": "Aqua Diamond",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_diamond_ice",
+  "name": "Ice Diamond",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_diamond_neonblue",
+  "name": "Neon Blue Diamond",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_flame_ember",
+  "name": "Ember Flame",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_flame_lava",
+  "name": "Lava Flame",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "emblem_flame_toxic",
+  "name": "Toxic Flame",
+  "cat": "Emblem",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "galaxy_void",
+  "name": "Void Galaxy",
+  "cat": "Space",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "galaxy_royal",
+  "name": "Royal Galaxy",
+  "cat": "Space",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "galaxy_ocean",
+  "name": "Ocean Galaxy",
+  "cat": "Space",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "marble_silver",
+  "name": "Silver Marble",
+  "cat": "Marble",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "marble_sakura",
+  "name": "Sakura Marble",
+  "cat": "Marble",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "marble_slate",
+  "name": "Slate Marble",
+  "cat": "Marble",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "marble_gold",
+  "name": "Gold Marble",
+  "cat": "Marble",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "camo_forest",
+  "name": "Forest Camo",
+  "cat": "Camo",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "camo_sand",
+  "name": "Sand Camo",
+  "cat": "Camo",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "camo_storm",
+  "name": "Storm Camo",
+  "cat": "Camo",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "camo_neonpink",
+  "name": "Neon Pink Camo",
+  "cat": "Camo",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "carbon",
+  "name": "Carbon Fiber",
+  "cat": "Pattern",
+  "tier": "pro",
+  "frames": 1
+ },
+ {
+  "id": "anim_rainbow",
+  "name": "Rainbow Flow",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ },
+ {
+  "id": "anim_goldshimmer",
+  "name": "Gold Shimmer",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ },
+ {
+  "id": "anim_lavaflow",
+  "name": "Lava Flow",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ },
+ {
+  "id": "anim_aurora",
+  "name": "Aurora",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ },
+ {
+  "id": "anim_twinkle",
+  "name": "Starlight",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ },
+ {
+  "id": "anim_plasma",
+  "name": "Plasma",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ },
+ {
+  "id": "anim_neonpulse",
+  "name": "Neon Pulse",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ },
+ {
+  "id": "anim_oceanwaves",
+  "name": "Tidal",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ },
+ {
+  "id": "anim_fire",
+  "name": "Inferno",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ },
+ {
+  "id": "anim_portal",
+  "name": "Void Portal",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ },
+ {
+  "id": "anim_electric",
+  "name": "Electric",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ },
+ {
+  "id": "anim_cherryfall",
+  "name": "Sakura Fall",
+  "cat": "Animated",
+  "tier": "pro",
+  "frames": 8
+ }
+]

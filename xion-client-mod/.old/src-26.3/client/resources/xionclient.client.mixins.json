@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "net.xion.client.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"GuiMixin",
+		"MinecraftMixin",
+		"MouseHandlerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

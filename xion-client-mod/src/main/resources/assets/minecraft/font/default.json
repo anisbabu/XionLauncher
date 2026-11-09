@@ -1,0 +1,18 @@
+{
+	"providers": [
+		{
+			"type": "bitmap",
+			"file": "xionclient:font/badge.png",
+			"ascent": 7,
+			"height": 8,
+			"chars": [""]
+		},
+		{
+			"type": "bitmap",
+			"file": "xionclient:font/badge_pro.png",
+			"ascent": 7,
+			"height": 8,
+			"chars": [""]
+		}
+	]
+}

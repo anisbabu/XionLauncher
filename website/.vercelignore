@@ -1,0 +1,4 @@
+downloads/
+.git/
+node_modules/
+api/*.test.js

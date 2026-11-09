@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com data:; script-src 'self'; connect-src 'self'">
+  <title>Xion Launcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Inter:wght@400;500;600&family=Allura&family=JetBrains+Mono:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="store/store.css">
+  <link rel="stylesheet" href="intro.css">
+</head>
+<body data-page="play">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="xl-a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#aab6cc"/></linearGradient>
+      <linearGradient id="xl-b" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe7f5"/><stop offset="1" stop-color="#7d8aa3"/></linearGradient>
+    </defs>
+    <symbol id="xlogo" viewBox="0 0 128 128">
+      <path d="M26 24h22l54 80H80z" fill="url(#xl-a)"/>
+      <path d="M80 24h22L75 64 64 48z" fill="url(#xl-b)"/>
+      <path d="M53 80 64 96l-6 8H26z" fill="url(#xl-b)"/>
+    </symbol>
+  </svg>
+
+  <div class="splash" id="splash">
+    <svg class="splash-logo"><use href="#xlogo"/></svg>
+    <div class="splash-name">Xion</div>
+    <div class="splash-sig">by Taseen Rahman</div>
+    <div class="splash-bar"><i></i></div>
+  </div>
+
+  <!-- Living backdrop: layered mountains with parallax, drifting fog and twinkling stars -->
+  <div class="scene" id="scene">
+    <div class="layer sky" data-depth="6"></div>
+    <canvas id="heroCanvas"></canvas>
+    <div class="layer far" data-depth="12"></div>
+    <div class="fog fog-a"><i></i></div>
+    <div class="layer mid" data-depth="20"></div>
+    <div class="layer near" data-depth="30"></div>
+    <div class="fog fog-b"><i></i></div>
+    <div class="layer front" data-depth="44"></div>
+    <div class="shade"></div>
+  </div>
+
+  <div class="app">
+    <header class="titlebar">
+      <div class="brand">
+        <svg class="brand-logo"><use href="#xlogo"/></svg>
+        <div class="brand-text"><b>Xion</b><span class="sig">by Taseen Rahman</span></div>
+      </div>
+      <nav class="tabs">
+        <span class="tab-ink" id="tabInk"></span>
+        <button class="nav active" data-page="play">Home</button>
+        <button class="nav nav-pvp" data-page="pvp"><svg viewBox="0 0 24 24"><path d="M14.5 3.5 20.5 3.5 20.5 9.5 9 21 3 15z"/><path d="M13 8l3 3M5 13l6 6"/></svg>PvP</button>
+        <button class="nav nav-store" data-page="store"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 12.5a1 1 0 01-1 .9h-11a1 1 0 01-1-.9z"/><path d="M8.5 7a3.5 3.5 0 017 0"/></svg>Store</button>
+        <button class="nav" data-page="profiles">Profiles</button>
+        <button class="nav" data-page="mods">Mods</button>
+        <button class="nav" data-page="player">Skin</button>
+        <button class="nav" data-page="servers">Servers</button>
+        <button class="nav" data-page="logs">Console</button>
+      </nav>
+      <div class="drag"></div>
+      <button class="update-pill" id="updatePill" hidden></button>
+      <button class="nav icon-nav" data-page="settings" title="Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg></button>
+      <div class="account-chip" id="accountChip">
+        <img id="chipHead" class="chip-head" alt="">
+        <div class="chip-text"><span id="chipName">Add account</span><small id="chipType">Not signed in</small></div>
+        <svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="win-controls">
+        <button data-win="min" title="Minimize"><svg viewBox="0 0 12 12"><path d="M2 6h8"/></svg></button>
+        <button data-win="max" title="Maximize"><svg viewBox="0 0 12 12"><rect x="2" y="2" width="8" height="8" rx="1.5"/></svg></button>
+        <button data-win="close" class="close" title="Close"><svg viewBox="0 0 12 12"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7"/></svg></button>
+      </div>
+    </header>
+
+    <div class="account-menu" id="accountMenu">
+      <div class="menu-title">Accounts</div>
+      <div id="accountList" class="account-list"></div>
+      <div class="menu-actions">
+        <button class="btn ms" id="addMicrosoft">
+          <svg viewBox="0 0 23 23"><path fill="#f35325" d="M1 1h10v10H1z"/><path fill="#81bc06" d="M12 1h10v10H12z"/><path fill="#05a6f0" d="M1 12h10v10H1z"/><path fill="#ffba08" d="M12 12h10v10H12z"/></svg>
+          Sign in with Microsoft
+        </button>
+        <button class="btn ghost" id="addOffline">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+          Add offline account
+        </button>
+      </div>
+    </div>
+
+    <main class="content">
+      <!-- HOME -->
+      <section class="page active home" id="page-play">
+        <div class="home-main">
+          <div class="status" id="heroBadge"><i></i><span id="heroBadgeText">Ready to play</span></div>
+          <p class="hello">Welcome back,</p>
+          <h1 class="g-name" id="nametag">Player</h1>
+          <div class="hero-chips" id="heroChips"></div>
+
+          <div class="launch-row">
+            <div class="launch idle" id="launchBox">
+              <button class="launch-main" id="launchBtn">
+                <span class="launch-progress" id="launchProgress"></span>
+                <svg class="launch-ico" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg>
+                <span class="launch-text"><span class="launch-title" id="launchTitle">Play</span><span class="launch-sub" id="launchSub">Loading…</span></span>
+              </button>
+            </div>
+            <div class="pick-wrap">
+              <button class="launch-pick" id="profilePickBtn" title="Choose profile">
+                <span class="pick-k">Profile</span><span id="pickLabel">—</span>
+                <svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg>
+              </button>
+              <div class="profile-pop" id="profilePop"></div>
+            </div>
+          </div>
+          <div class="launch-steps" id="launchSteps"></div>
+        </div>
+
+        <aside class="home-side">
+          <div class="side-head"><span>Latest news</span><button class="link-btn" id="newsAll">See all</button></div>
+          <div class="news" id="news"><div class="news-card skeleton"></div><div class="news-card skeleton"></div><div class="news-card skeleton"></div></div>
+          <div class="side-head"><span>Quick join</span><button class="link-btn" data-goto="servers">Host a server</button></div>
+          <div class="qp-servers" id="featured"></div>
+        </aside>
+      </section>
+
+      <!-- PVP -->
+      <section class="page pvp" id="page-pvp">
+        <div class="page-head">
+          <div><span class="eyebrow">Free mode</span><h1>PvP</h1><p class="muted">Xion Client tuned for fighting. Its own HUD, in-game menu and mod pack, on any version.</p></div>
+          <div class="row gap">
+            <span class="muted small">Version</span><select id="pvpVersion" class="compact"></select>
+            <button class="btn primary pvp-play" id="pvpPlay"><span class="pvp-fill" id="pvpFill"></span><span id="pvpPlayLabel">Play PvP</span></button>
+          </div>
+        </div>
+        <div class="pvp-grid">
+          <div class="pvp-col">
+            <div class="card">
+              <h3>Servers</h3>
+              <div class="pvp-servers" id="pvpServers"></div>
+            </div>
+            <div class="card">
+              <h3>In PvP mode</h3>
+              <ul class="pvp-list">
+                <li><b>PvP HUD.</b> Combo, reach, CPS, keystrokes, armor, potions and item counts, laid out for fighting.</li>
+                <li><b>PvP menu.</b> A red in-game menu with one-tap HUD, sprint and brightness toggles.</li>
+                <li><b>PvP mod pack.</b> Performance, low fire, hit color, zoom and freelook. Change it on the right.</li>
+                <li><b>Tuned options.</b> Unlimited FPS, no VSync, no view bobbing.</li>
+              </ul>
+              <div class="pvp-stats" id="pvpStats"></div>
+            </div>
+          </div>
+          <div class="card pvp-pack">
+            <div class="row"><h3 class="grow">Mod pack</h3><span class="muted small" id="pvpModCount"></span></div>
+            <div class="pvp-mods" id="pvpMods"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROFILES -->
+      <!-- STORE -->
+      <section class="page store-page" id="page-store">
+        <div class="xs-top">
+          <div class="xs-title"><span class="eyebrow">Cosmetics</span><h1>Xion Store</h1><div class="xs-stats-line" id="xsStats"></div></div>
+          <div class="xs-tabs">
+            <button class="on" data-tab="shop">Shop</button>
+            <button data-tab="locker">Locker</button>
+            <button data-tab="orders">Orders<i class="xs-dot hidden" id="xsOrdersBadge"></i></button>
+          </div>
+          <div class="xs-tools">
+            <select id="xsCurrency" title="Currency"><option value="USD">$ USD</option><option value="BDT">৳ BDT</option><option value="INR">₹ INR</option></select>
+            <button class="xs-cartbtn" id="xsCartBtn" title="Cart"><svg viewBox="0 0 24 24"><path d="M4 7h16l-1.5 12.5a1 1 0 01-1 .9h-11a1 1 0 01-1-.9z"/><path d="M8.5 7a3.5 3.5 0 017 0"/></svg><i id="xsCartCount" class="hidden">0</i></button>
+            <button class="xs-adminbtn" id="xsAdminBtn" title="Store admin"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></button>
+          </div>
+        </div>
+
+        <div class="xs-body">
+          <aside class="xs-stage">
+            <div class="xs-canvas"><canvas id="xsCanvas"></canvas><div class="xs-floor"></div><span class="xs-name" id="xsStageName">Guest</span></div>
+            <div class="xs-wearing" id="xsWearing"></div>
+            <div class="xs-ctrl">
+              <button id="xsSpin" class="on" title="Spin">⟳ Spin</button><button id="xsFront" title="Front">Front</button><button id="xsBack" title="Back">Back</button><button id="xsReset" title="Reset outfit">Reset</button>
+            </div>
+            <div class="xs-analyze" id="xsAnalyze"></div>
+          </aside>
+
+          <div class="xs-main">
+            <div class="xs-view" data-view="shop">
+              <div class="xs-filters">
+                <div class="xs-chips">
+                  <button class="xs-chip on" data-filter="all">All</button><button class="xs-chip" data-filter="cape">Capes</button><button class="xs-chip" data-filter="hat">Hats</button>
+                  <button class="xs-chip" data-filter="wings">Wings</button><button class="xs-chip" data-filter="aura">Auras</button><button class="xs-chip" data-filter="animated">✦ Animated</button>
+                </div>
+                <div class="xs-frow">
+                  <input id="xsSearch" placeholder="Search cosmetics…" autocomplete="off" spellcheck="false">
+                  <select id="xsSet"><option value="">All collections</option></select>
+                  <select id="xsSort"><option value="featured">Featured</option><option value="popular">Most worn</option><option value="rarity">Rarest</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option></select>
+                </div>
+              </div>
+              <div id="xsBundles"><h2 class="xs-h">Bundles <small>save about 40%</small></h2><div class="xs-bundles" id="xsBundleRow"></div></div>
+              <h2 class="xs-h">All cosmetics <small id="xsCount"></small></h2>
+              <div class="xs-grid" id="xsGrid"><div class="xs-empty">Opening the store…</div></div>
+            </div>
+            <div class="xs-view hidden" data-view="locker"><div id="xsLocker"></div></div>
+            <div class="xs-view hidden" data-view="orders"><h2 class="xs-h">Your orders</h2><div id="xsOrderList"></div></div>
+          </div>
+        </div>
+
+        <!-- cart -->
+        <div class="xs-layer hidden" id="xsCart"><div class="xs-drawer">
+          <header><h3>Cart</h3><button data-close>✕</button></header>
+          <div class="xs-clines" id="xsCartLines"></div>
+          <div class="xs-codebox"><input id="xsCode" placeholder="Discount code" autocomplete="off"><button class="btn ghost" id="xsApplyCode">Apply</button></div>
+          <small class="muted" id="xsCodeNote"></small>
+          <div class="xs-ctotal"><span>Total</span><b id="xsCartTotal">—</b></div>
+          <button class="btn primary wide" id="xsCheckout" disabled>Checkout</button>
+        </div></div>
+
+        <!-- checkout -->
+        <div class="xs-layer hidden" id="xsCheckoutModal"><form class="xs-modal" id="xsCheckoutForm" autocomplete="off">
+          <header><div class="xs-steps"><span class="on">Details</span><span>Payment</span><span>Done</span></div><button type="button" data-close>✕</button></header>
+          <div class="xs-step" data-step="1">
+            <div class="xs-sum" id="xsSum"></div>
+            <label>Minecraft name (who gets the cosmetics)<input name="ign" maxlength="16"></label>
+            <label>Email (so we can reach you)<input name="email" type="email" maxlength="120"></label>
+            <button type="button" class="btn primary wide" id="xsToPay">Continue to payment</button>
+          </div>
+          <div class="xs-step hidden" data-step="2">
+            <div class="xs-methods" id="xsMethods"></div>
+            <div class="xs-paybox" id="xsPayBox"></div>
+            <div id="xsPayFields">
+              <label><span id="xsPayerLabel">Number you paid from</span><input name="payer" maxlength="60"></label>
+              <label>Transaction ID<input name="trx" maxlength="60"></label>
+              <label class="xs-file">Payment screenshot<input type="file" name="shot" accept="image/png,image/jpeg,image/webp"><span id="xsShotName">Choose image…</span></label>
+            </div>
+            <p class="xs-err" id="xsPayErr"></p>
+            <div class="xs-two"><button type="button" class="btn ghost" id="xsBackTo1">Back</button><button class="btn primary" id="xsPlace">Place order</button></div>
+          </div>
+          <div class="xs-step hidden xs-done" data-step="3">
+            <div class="xs-check">✓</div><h3>Order placed!</h3>
+            <p class="muted">We check your payment and unlock your cosmetics. Your locker key appears here as soon as it's approved, and the launcher saves it for you.</p>
+            <button type="button" class="btn primary wide" id="xsViewOrder">View order</button>
+          </div>
+        </form></div>
+
+        <!-- order detail -->
+        <div class="xs-layer hidden" id="xsOrderModal"><div class="xs-modal"><header><h3>Order</h3><button data-close>✕</button></header><div id="xsOrderBody"></div></div></div>
+
+        <!-- admin -->
+        <div class="xs-layer hidden" id="xsAdminLogin"><form class="xs-modal xs-small" id="xsAdminForm" autocomplete="off">
+          <header><h3>Store admin</h3><button type="button" data-close>✕</button></header>
+          <label>Username<input name="user" maxlength="40" autocomplete="username"></label>
+          <label>Password<input name="pass" type="password" maxlength="100" autocomplete="current-password"></label>
+          <p class="xs-err" id="xsAdminErr"></p>
+          <button type="submit" class="btn primary wide">Log in</button>
+        </form></div>
+        <div class="xs-layer hidden" id="xsAdmin"><div class="xs-admin">
+          <header><h3>Store admin</h3><div class="xs-tabs"><button data-atab="orders" class="on">Orders</button><button data-atab="players">Players</button><button data-atab="settings">Payments &amp; codes</button></div><button class="btn ghost" id="xsAdminOut">Log out</button><button data-close>✕</button></header>
+          <div class="xs-abody" id="xsAdminBody"></div>
+        </div></div>
+      </section>
+
+      <section class="page" id="page-profiles">
+        <div class="page-head">
+          <div><span class="eyebrow">Library</span><h1>Profiles</h1><p class="muted">Every profile runs Xion Client with its own folder, mods and settings.</p></div>
+          <button class="btn primary" id="newProfileBtn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New profile</button>
+        </div>
+        <div class="profile-grid" id="profileGrid"></div>
+      </section>
+
+      <!-- MODS -->
+      <section class="page" id="page-mods">
+        <div class="page-head">
+          <div><span class="eyebrow">Modrinth</span><h1>Mods</h1><p class="muted">Thousands of Fabric mods, installed with their dependencies in one click.</p></div>
+          <div class="row gap"><span class="muted small">Install into</span><select id="modsProfile" class="compact"></select></div>
+        </div>
+        <div class="mods-bar">
+          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="text" id="modsQuery" placeholder="Search mods — minimap, shaders, recipes…"></div>
+          <div class="chips" id="modsChips"></div>
+        </div>
+        <div class="mods-grid" id="modsGrid"></div>
+        <div class="mods-more"><button class="btn ghost" id="modsMore">Load more</button></div>
+      </section>
+
+      <!-- PLAYER -->
+      <section class="page" id="page-player">
+        <div class="player-page">
+          <div class="stage">
+            <div class="stage-glow"></div>
+            <div class="stage-grid"></div>
+            <div class="stage-particles" id="stageParticles"></div>
+            <canvas id="skinCanvas"></canvas>
+            <div class="stage-ring"></div>
+            <div class="anim-pick" id="animPick">
+              <button data-anim="idle" class="on">Idle</button><button data-anim="walk">Walk</button><button data-anim="run">Run</button><button data-anim="wave">Wave</button><button data-anim="fly">Fly</button>
+            </div>
+            <div class="stage-hint">Drag to rotate · scroll to zoom</div>
+          </div>
+          <div class="pp-side">
+            <span class="eyebrow">Xion profile</span>
+            <div class="pp-name"><span class="xbadge"></span><h1 id="ppName">Player</h1></div>
+            <div class="row gap"><span class="pill" id="ppType">Offline</span><span class="pill ghost" id="ppClient">Xion Client</span></div>
+            <div class="stats" id="ppStats"></div>
+            <div class="card skin-card">
+              <h3>Skin</h3>
+              <p class="muted small" id="skinNote"></p>
+              <div class="seg" id="skinModel"><button data-slim="0">Classic · 4px arms</button><button data-slim="1">Slim · 3px arms</button></div>
+              <div class="row gap" style="margin-top:14px">
+                <button class="btn primary" id="skinUpload"><svg viewBox="0 0 24 24"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>Upload skin</button>
+                <button class="btn ghost" id="skinReset">Reset</button>
+              </div>
+            </div>
+            <div class="card cape-card">
+              <div class="cape-head"><h3>Capes</h3><span class="muted small" id="capeName">No cape</span></div>
+              <div class="cape-own">
+                <button class="btn ghost small" id="capeUpload"><svg viewBox="0 0 24 24"><path d="M12 16V4M6 10l6-6 6 6M4 20h16"/></svg>Upload your own cape <b class="gold">XION+</b></button>
+                <button class="btn ghost small" id="capeRemoveOwn" hidden>Remove</button>
+                <input type="file" id="capeFile" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+              </div>
+              <div class="cape-cats" id="capeCats"></div>
+              <div class="cape-grid" id="capeGrid"></div>
+              <p class="muted small cape-note">Your elytra matches your cape (try <b>Fly</b>). Shown by Xion Client in game; other players don&rsquo;t see it. <b class="gold">XION+</b> unlocks every cape, including the animated ones, and lets you upload your own: a cape texture (64&times;32 or any 2:1 size) or any picture.</p>
+            </div>
+            <div class="card">
+              <h3>Badge</h3>
+              <div class="nametag-demo"><span class="xbadge sm"></span><span id="tagName">Player</span></div>
+              <p class="muted small">The Xion badge shows next to your name in the tab list and above your head in third person. Toggle it in game with Right Shift → Features.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVERS -->
+      <section class="page" id="page-servers">
+        <div class="page-head">
+          <div><span class="eyebrow">Paper</span><h1>Servers</h1><p class="muted">Run your own server on this PC — perfect for playing with friends.</p></div>
+          <button class="btn primary" id="newServerBtn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>New server</button>
+        </div>
+        <div class="servers-layout">
+          <div class="srv-list" id="srvList"></div>
+          <div class="srv-detail" id="srvDetail">
+            <div class="empty"><div class="empty-art"></div><h3>No server selected</h3><p class="muted">Create a Paper server to get started.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOGS -->
+      <section class="page" id="page-logs">
+        <div class="page-head">
+          <div><span class="eyebrow">Diagnostics</span><h1>Console</h1><p class="muted">Live output from Minecraft and the launcher.</p></div>
+          <div class="row gap">
+            <button class="btn ghost" id="copyLogs">Copy</button>
+            <button class="btn ghost" id="clearLogs">Clear</button>
+            <button class="btn danger" id="killGame" disabled>Force stop</button>
+          </div>
+        </div>
+        <pre class="console" id="console"></pre>
+      </section>
+
+      <!-- SETTINGS -->
+      <section class="page" id="page-settings">
+        <div class="page-head"><div><span class="eyebrow">Preferences</span><h1>Settings</h1><p class="muted">Performance, game window and storage · Xion Launcher <span id="appVersion"></span></p></div></div>
+        <div class="card theme-card">
+          <div class="theme-head">
+            <div><h3>Theme</h3><p class="muted small">Changes the launcher and the game: colours, menus and the mountain backdrop.</p></div>
+          </div>
+          <div class="theme-grid" id="themeGrid"></div>
+        </div>
+        <div class="card premium-card" id="premiumCard">
+          <div class="premium-glow"></div>
+          <div class="premium-left">
+            <span class="premium-badge">XION+</span>
+            <h3 id="premiumTitle">Xion Premium</h3>
+            <p class="muted small" id="premiumText">One-time $5 · ৳150 · ₹350. Unlocks 100+ capes, your own custom cape, premium themes, the gold Xion+ badge, chroma and custom HUD colours, custom crosshairs and pro HUD modules (Target HUD, Combo, Reach).</p>
+            <div class="premium-actions" id="premiumActions">
+              <input type="text" id="licenseKey" placeholder="Paste your XION- license key" spellcheck="false" autocomplete="off">
+              <button class="btn primary" id="activateKey">Activate</button>
+              <button class="btn ghost" id="buyPremium">Get Premium</button>
+            </div>
+            <div class="premium-device"><span>Your Device ID</span><code id="deviceId">····-····-····-····</code><button class="btn ghost sm" id="copyDevice">Copy</button><small class="muted">Send this to the seller with your purchase. Your key will only work on this computer.</small></div>
+          </div>
+          <ul class="premium-list">
+            <li><b>100+ capes</b><span>Animated and HD capes with matching elytra</span></li>
+            <li><b>3 premium themes</b><span>Sakura, Ember and Void</span></li>
+            <li><b>Turbo FPS mode</b><span>Max-FPS preset for integrated graphics</span></li>
+            <li><b>Animated gold X badge</b><span>Shimmering badge by your name, tab list and F5</span></li>
+            <li><b>Chroma HUD</b><span>Rainbow or any colour for every module</span></li>
+            <li><b>Custom crosshair</b><span>Dot, plus, circle and more, any colour</span></li>
+            <li><b>Pro HUD modules</b><span>Target HUD, Combo counter, Reach display</span></li>
+          </ul>
+        </div>
+        <div class="card perf-card">
+          <div class="theme-head"><div><h3>Performance</h3><p class="muted small">FPS preset for low-end PCs and integrated graphics. Applied to the game on next launch; you can still change video settings in game afterwards.</p></div></div>
+          <div class="perf-grid" id="perfGrid">
+            <button class="perf" data-perf="off"><b>Off</b><span>Keep the game's own settings</span></button>
+            <button class="perf" data-perf="boost"><b>Boost <i class="perf-tag">FREE</i></b><span>Fast graphics, no clouds, fewer particles, no entity shadows, tuned Java memory</span></button>
+            <button class="perf" data-perf="turbo"><b>Turbo <i class="perf-tag gold">XION+</i></b><span>Max FPS for iGPUs: everything in Boost plus no smooth lighting, opaque leaves, minimal particles and no mipmaps</span></button>
+          </div>
+        </div>
+        <div class="settings">
+          <div class="card">
+            <h3>Memory</h3>
+            <div class="field">
+              <label>Maximum RAM <b id="memMaxLabel">4 GB</b></label>
+              <input type="range" id="memMax" min="1024" max="16384" step="512">
+              <div class="range-scale"><span>1 GB</span><span id="memTotal">16 GB</span></div>
+            </div>
+            <div class="field">
+              <label>Minimum RAM <b id="memMinLabel">1 GB</b></label>
+              <input type="range" id="memMin" min="512" max="8192" step="512">
+            </div>
+          </div>
+          <div class="card">
+            <h3>Game window</h3>
+            <div class="field-row">
+              <div class="field"><label>Width</label><input type="number" id="resW" min="640"></div>
+              <div class="field"><label>Height</label><input type="number" id="resH" min="480"></div>
+            </div>
+            <label class="toggle"><input type="checkbox" id="fullscreen"><span></span>Launch in fullscreen</label>
+            <label class="toggle"><input type="checkbox" id="closeOnLaunch"><span></span>Hide launcher while playing</label>
+          </div>
+          <div class="card">
+            <h3>Xion Pack</h3>
+            <p class="muted small">Xion&rsquo;s official resource pack: dark inventories and menus, smaller swords and tools in your hand, a lower shield and a clear pumpkin view. Made for each game version, so it always matches. You can also switch it in game under Options &rarr; Resource Packs.</p>
+            <label class="toggle"><input type="checkbox" id="xionPack"><span></span>Use the Xion Pack in normal play</label>
+            <label class="toggle"><input type="checkbox" id="xionPackPvp"><span></span>Use the Xion Pack in PvP mode</label>
+          </div>
+          <div class="card">
+            <h3>Java</h3>
+            <p class="muted small">Leave empty and Xion downloads the right official Java for each version.</p>
+            <div class="field">
+              <label>Custom Java executable</label>
+              <div class="input-btn"><input type="text" id="javaPath" placeholder="Automatic (recommended)"><button class="btn ghost" id="pickJava">Browse</button></div>
+            </div>
+            <div class="field"><label>Extra JVM arguments</label><input type="text" id="jvmArgs" placeholder="-XX:+UseG1GC -XX:MaxGCPauseMillis=50"></div>
+          </div>
+          <div class="card">
+            <h3>Connection</h3>
+            <p class="muted small">Stuck on loading? Test which services this PC can reach. Firewalls, VPNs and antivirus web shields are the usual cause.</p>
+            <button class="btn ghost" id="netTest">Test connection</button>
+            <div class="net-results" id="netResults"></div>
+          </div>
+          <div class="card">
+            <h3>Storage</h3>
+            <label class="toggle hidden"><input type="checkbox" id="showSnapshots"><span></span>Show snapshots</label>
+            <label class="toggle hidden"><input type="checkbox" id="showOld"><span></span>Show old versions</label>
+            <div class="field">
+              <label>Game directory</label>
+              <div class="input-btn"><input type="text" id="gameRoot" readonly><button class="btn ghost" id="pickRoot">Change</button><button class="btn ghost" id="openRoot">Open</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-back" id="modalBack"><div class="modal" id="modal"></div></div>
+  <div class="toasts" id="toasts"></div>
+
+  <script src="vendor/skinview3d.bundle.js"></script>
+  <script src="hero.js"></script>
+  <script src="app.js"></script>
+  <script src="intro.js"></script>
+  <script type="module" src="store/store.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+	"schemaVersion": 1,
+	"id": "xionclient",
+	"version": "${version}",
+	"name": "Xion Client",
+	"description": "The in-game side of Xion Launcher: Xion main menu, HUD mods, Right Shift menu with HUD editor, profile & custom skins, Xion badge.",
+	"authors": ["Xion"],
+	"license": "MIT",
+	"icon": "assets/xionclient/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": ["net.xion.client.XionClient"]
+	},
+	"mixins": ["xionclient.mixins.json"],
+	"depends": {
+		"fabricloader": ">=0.14.0",
+		"minecraft": "${mc}",
+		"java": ">=${java}",
+		"fabric-api": "*"
+	}
+}

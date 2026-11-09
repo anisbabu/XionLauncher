@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Player Look · Xion Store</title>
+  <meta name="theme-color" content="#0b0716">
+  <link rel="icon" href="/assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/store.css">
+  <script type="importmap">
+  { "imports": {
+      "three": "/vendor/three/three.module.js",
+      "three/examples/jsm/": "/vendor/three/jsm/",
+      "skinview3d": "/vendor/skinview3d/skinview3d.js",
+      "skinview-utils": "/vendor/skinview-utils/index.js"
+  } }
+  </script>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"><div class="stars"></div><div class="moon"></div></div>
+  <header class="nav">
+    <a class="brand" href="/"><img src="/assets/logo.png" alt=""><span>XION <b>STORE</b></span></a>
+    <div class="nav-right"><a class="mc-btn primary" href="/#shop">Shop cosmetics</a></div>
+  </header>
+  <main class="profile">
+    <div class="stage"><div class="pedestal" style="left:19%"></div><canvas id="pCanvas"></canvas></div>
+    <div>
+      <span class="tag">Xion Store look</span>
+      <h1 id="pName">…</h1>
+      <p style="color:var(--muted);line-height:1.6" id="pSub">Loading…</p>
+      <div class="worn" id="pWorn"></div>
+      <div class="row" style="flex-wrap:wrap">
+        <button class="mc-btn" id="pShare">Copy profile link</button>
+        <a class="mc-btn primary" href="/#bundles">Get your own look</a>
+      </div>
+    </div>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script type="module">
+    import { Dresser } from '/js/cosmetics3d.js'
+    const $ = s => document.querySelector(s)
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
+    const name = decodeURIComponent((location.pathname.match(/^\/u\/([^/]+)/) || [])[1] || new URLSearchParams(location.search).get('name') || '')
+    const canvas = $('#pCanvas'), box = canvas.parentElement.getBoundingClientRect()
+    const d = new Dresser({ canvas, width: box.width, height: box.height, rotate: true, animation: 'walk', zoom: 0.68 })
+    new ResizeObserver(() => { const r = canvas.parentElement.getBoundingClientRect(); d.viewer.setSize(r.width, r.height) }).observe(canvas.parentElement)
+    $('#pShare').onclick = () => navigator.clipboard.writeText(location.href).then(() => { const t = $('#toast'); t.textContent = 'Link copied'; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2000) })
+    async function load () {
+      if (!/^[A-Za-z0-9_]{3,16}$/.test(name)) { $('#pName').textContent = 'Player not found'; $('#pSub').textContent = 'That is not a Minecraft name.'; return }
+      d.setSkin('/api/skin?name=' + encodeURIComponent(name))
+      const [cfg, p] = await Promise.all([fetch('/api/shop').then(r => r.json()), fetch('/api/wear?name=' + encodeURIComponent(name)).then(r => r.json())])
+      const byId = id => cfg.items.find(i => i.id === id)
+      document.title = `${p.display} · Xion Store`
+      $('#pName').textContent = p.display
+      const eq = Object.entries(p.equipped || {}).map(([s, id]) => [s, byId(id)]).filter(x => x[1])
+      d.wear(Object.fromEntries(eq))
+      $('#pSub').textContent = eq.length ? `${p.owned.length} cosmetic${p.owned.length === 1 ? '' : 's'} collected. This is how ${p.display} looks to every Xion Client player.` : `${p.display} is not wearing any Xion Store cosmetics yet.`
+      $('#pWorn').innerHTML = eq.map(([s, it]) => `<div class="card r-${it.rarity}"><span class="rar" style="position:static">${it.rarity}</span><div><b>${esc(it.name)}</b><small>${s}</small></div></div>`).join('')
+    }
+    load().catch(() => { $('#pSub').textContent = 'Could not load this profile right now.' })
+  </script>
+</body>
+</html>

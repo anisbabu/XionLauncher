@@ -1,0 +1,23 @@
+{
+	"schemaVersion": 1,
+	"id": "xionclient",
+	"version": "${version}",
+	"name": "Xion Client",
+	"description": "The in-game experience of Xion Launcher: custom main menu, HUD mods (FPS, CPS, keystrokes, armor, coordinates…) and a Right Shift mod menu with a drag-and-drop HUD editor.",
+	"authors": ["Xion"],
+	"license": "MIT",
+	"icon": "assets/xionclient/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": ["net.xion.client.XionClient"]
+	},
+	"mixins": [
+		{ "config": "xionclient.client.mixins.json", "environment": "client" }
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

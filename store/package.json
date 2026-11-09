@@ -1,0 +1,8 @@
+{
+  "name": "xion-store",
+  "private": true,
+  "description": "Xion Store: cosmetics for Xion Client",
+  "dependencies": {
+    "@vercel/blob": "^2.8.2"
+  }
+}
